@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,17 +8,40 @@ namespace MyAssets.module_management
     public class ModuleState : ScriptableObject
     {
         [SerializeField] private List<int> modules = new();
+        [SerializeField] private List<int> initialModules = new();
+        [SerializeField] private bool generateNewValues = true;
+        [SerializeField] private bool keepInitialValues = true;
         [SerializeField] private ModuleProperties moduleProperties;
         public List<int> Modules => modules;
         public int NumberOfModules { get; set; } = 9;
 
+        public void OnEnable()
+        {
+            if (generateNewValues)
+            {
+                ResetDefault();
+                return;
+            }
+
+            modules = new(initialModules);
+            FillRemaining();
+        }
+
+        public void OnDisable()
+        {
+            if (!keepInitialValues)
+                initialModules = modules;
+        }
+
         public void SetModule(int index, int value)
         {
+            var previousValue = modules[index];
             if (index >= modules.Count)
                 modules.Add(value);
             else
                 modules[index] = value;
-            CallDelegates(new KeyValuePair<int, int>(index, value));
+            CallDelegates(new KeyValuePair<int, KeyValuePair<int, int>>(index,
+                new KeyValuePair<int, int>(previousValue, value)));
         }
 
         public void ResetDefault()
@@ -33,14 +57,14 @@ namespace MyAssets.module_management
                 SetModule(i, 0);
         }
 
-        public void FillRemaining()
+        private void FillRemaining()
         {
             var rng = new System.Random();
             for (var i = modules.Count; i < NumberOfModules; i++)
                 SetModule(i, rng.Next(1, moduleProperties.FirstUpgradeModule));
         }
 
-        public delegate void ChangedValue(KeyValuePair<int, int> alteredValues);
+        public delegate void ChangedValue(KeyValuePair<int, KeyValuePair<int, int>> alteredValues);
 
         [SerializeField] private readonly List<ChangedValue> _listeners = new();
 
@@ -49,7 +73,7 @@ namespace MyAssets.module_management
             _listeners.Add(listener);
         }
 
-        private void CallDelegates(KeyValuePair<int, int> alteredValues)
+        private void CallDelegates(KeyValuePair<int, KeyValuePair<int,int>> alteredValues)
         {
             foreach (var listener in _listeners)
             {

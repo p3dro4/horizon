@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4049acca12699cd4baee4245c28fb489, type: 3}
-  m_Name: ResourceState
+  m_Name: MorkiteRequirements
   m_EditorClassIdentifier: 
-  resources: 0a00000005000000000000000000000000000000
-  initialResources: 0a00000005000000000000000000000000000000
+  resources: 
+  initialResources: 0000000000000000000000000000000064000000af0000007d000000c8000000

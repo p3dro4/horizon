@@ -17,7 +17,7 @@ namespace MyAssets.ui.overlay
         // Update is called once per frame
         void Update()
         {
-            _overlay.SetActive(!_buildMenu.activeSelf);
+            _overlay.transform.GetChild(1).gameObject.SetActive(!_buildMenu.activeSelf);
         }
     }
 }

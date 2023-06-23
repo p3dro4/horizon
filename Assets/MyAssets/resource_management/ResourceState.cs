@@ -7,6 +7,12 @@ namespace MyAssets.resource_management
     public class ResourceState : ScriptableObject
     {
         [SerializeField] private List<int> resources = new();
+        [SerializeField] private List<int> initialResources = new();
+
+        public void OnEnable()
+        {
+            resources = new List<int>(initialResources);
+        }
 
         public List<int> Resources => resources;
 

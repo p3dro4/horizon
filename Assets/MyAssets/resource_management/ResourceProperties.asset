@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceNames:
   - Power
+  - Science
   - Morkite
   - Bismor
   - Phazyonite
-  resourceImage: []
+  resourceImage:
+  - {fileID: 21300000, guid: d637e36f96e8aed458f3c6ed4f35aec6, type: 3}
+  - {fileID: 21300000, guid: 64d385b3621a4be418d11b285a810cbb, type: 3}
+  - {fileID: 21300000, guid: d7e29716f8c30b24995e00d8f8afee91, type: 3}
+  - {fileID: 21300000, guid: 0fce00b18048b744090969b556566327, type: 3}
+  - {fileID: 21300000, guid: 89f09b9d038c44140b4d5de9efce5f17, type: 3}
