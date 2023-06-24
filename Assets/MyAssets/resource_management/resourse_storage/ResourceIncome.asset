@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4049acca12699cd4baee4245c28fb489, type: 3}
   m_Name: ResourceIncome
   m_EditorClassIdentifier: 
-  resources: ffffffff00000000000000000000000000000000
-  initialResources: ffffffff00000000000000000000000000000000
+  resources: ffffffff0a000000000000000000000000000000
+  initialResources: ffffffff0a000000000000000000000000000000
+  resourceProperties: {fileID: 11400000, guid: 64884897cba72f04e84b590e593f26a9, type: 2}

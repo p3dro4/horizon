@@ -8,10 +8,14 @@ namespace MyAssets.resource_management
     {
         [SerializeField] private List<int> resources = new();
         [SerializeField] private List<int> initialResources = new();
+        [SerializeField] private ResourceProperties resourceProperties;
+        private readonly Dictionary<string, int> _resourceDict = new();
 
         public void OnEnable()
         {
             resources = new List<int>(initialResources);
+            for (var i = 0; i < resourceProperties.ResourceNames.Count; i++)
+                _resourceDict.Add(resourceProperties.ResourceNames[i].ToUpper(), i);
         }
 
         public List<int> Resources => resources;
@@ -39,6 +43,16 @@ namespace MyAssets.resource_management
         {
             resources[index] += value;
             CallDelegates(new KeyValuePair<int, int>(index, value));
+        }
+
+        public int GetResourceIndex(string resource)
+        {
+            return _resourceDict[resource.ToUpper()];
+        }
+
+        public int GetResourceValue(string resource)
+        {
+            return resources[_resourceDict[resource.ToUpper()]];
         }
 
         public delegate void ChangedValue(KeyValuePair<int, int> alteredValues);

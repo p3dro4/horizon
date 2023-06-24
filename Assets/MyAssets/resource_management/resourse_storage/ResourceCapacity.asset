@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4049acca12699cd4baee4245c28fb489, type: 3}
   m_Name: ResourceCapacity
   m_EditorClassIdentifier: 
-  resources: 14000000ffffffffe8030000e8030000e8030000
-  initialResources: 14000000ffffffffe8030000e8030000e8030000
+  resources: 1400000010270000102700001027000010270000
+  initialResources: 1400000010270000102700001027000010270000
+  resourceProperties: {fileID: 11400000, guid: 64884897cba72f04e84b590e593f26a9, type: 2}

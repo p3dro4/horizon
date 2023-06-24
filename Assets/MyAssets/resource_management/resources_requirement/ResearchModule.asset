@@ -16,9 +16,9 @@ MonoBehaviour:
   science: 0
   morkite: 100
   bismor: 0
-  phazionite: 5
+  phazyonite: 0
   initalPower: 10
   initialScience: 0
   initialMorkite: 100
   initialBismor: 0
-  initialPhazionite: 5
+  initialPhazyonite: 5

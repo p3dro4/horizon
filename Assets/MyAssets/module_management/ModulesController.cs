@@ -14,17 +14,11 @@ namespace MyAssets.module_management
         [SerializeField] private ResourceState resourceState;
         [SerializeField] private ResourceState resourceCapacity;
         [SerializeField] private ResourceState resourceIncome;
+        [SerializeField] private ResourceProperties resourceProperties;
         [SerializeField] private ScriptableObjectStorage resourceProduction;
         [SerializeField] private ScriptableObjectStorage resourceRequirement;
 
-        private Dictionary<string, int> _resourceIndex = new()
-        {
-            { "Power", 0 },
-            { "Science", 1 },
-            { "Morkite", 2 },
-            { "Bismor", 3 },
-            { "Phazionite", 4 }
-        };
+        private Dictionary<string, int> _resourceIndex = new();
 
         private List<GameObject> _modules = new();
 
@@ -42,6 +36,8 @@ namespace MyAssets.module_management
             _modules = moduleProperties.ModulePrefabs;
             moduleState.NumberOfModules = _modulesLocation.Count;
             if (moduleState.Modules.Count == 0) moduleState.ResetDefault();
+            for (var i = 0; i < resourceProperties.ResourceNames.Count; i++)
+                _resourceIndex.Add(resourceProperties.ResourceNames[i], i);
         }
 
         // Start is called before the first frame update

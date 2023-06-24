@@ -10,12 +10,12 @@ namespace MyAssets.resource_management
         [SerializeField] private int science;
         [SerializeField] private int morkite;
         [SerializeField] private int bismor;
-        [SerializeField] private int phazionite;
+        [SerializeField] private int phazyonite;
         [Space(10)] [SerializeField] private int initalPower;
         [SerializeField] private int initialScience;
         [SerializeField] private int initialMorkite;
         [SerializeField] private int initialBismor;
-        [SerializeField] private int initialPhazionite;
+        [SerializeField] private int initialPhazyonite;
 
         private void OnEnable()
         {
@@ -23,7 +23,7 @@ namespace MyAssets.resource_management
             science = initialScience;
             morkite = initialMorkite;
             bismor = initialBismor;
-            phazionite = initialPhazionite;
+            phazyonite = initialPhazyonite;
         }
 
         public int Power => power;
@@ -34,7 +34,7 @@ namespace MyAssets.resource_management
 
         public int Bismor => bismor;
 
-        public int Phazionite => phazionite;
+        public int Phazyonite => phazyonite;
 
         public int GetResource(string resource)
         {
@@ -44,7 +44,7 @@ namespace MyAssets.resource_management
                 "SCIENCE" => science,
                 "MORKITE" => morkite,
                 "BISMOR" => bismor,
-                "PHAZIONITE" => phazionite,
+                "PHAZYONITE" => phazyonite,
                 _ => 0
             };
         }
