@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
 using MyAssets.module_management;
 using TMPro;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 namespace MyAssets.ui.build_menu
 {
@@ -12,6 +12,7 @@ namespace MyAssets.ui.build_menu
         [SerializeField] private SelectedModule selectedModule;
         [SerializeField] private ModuleState moduleState;
         [SerializeField] private ModuleProperties moduleProperties;
+        [SerializeField] private int refundRate = 85;
         [SerializeField] private Sprite demolishSprite;
 
         private int _firstUpgradeModule;
@@ -57,11 +58,29 @@ namespace MyAssets.ui.build_menu
                 button.GetComponent<Image>().sprite = module != -1
                     ? moduleProperties.ModuleImage[module - _firstUpgradeModule]
                     : demolishSprite;
+                button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(() =>
                 {
                     moduleState.SetModule(selectedModule.SelectedModuleValue, module != -1 ? module : 0);
                     gameObject.SetActive(false);
                 });
+                var description = button.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+                description.text =
+                    module == -1
+                        ? "Removes the current upgrade"
+                        : moduleProperties.ModuleDescriptions[module - _firstUpgradeModule];
+                switch (module)
+                {
+                    case 5:
+                        var regex = new Regex(Regex.Escape("?"));
+                        description.text = regex.Replace(description.text, "Foo1", 1);
+                        description.text = regex.Replace(description.text, "Foo2", 1);
+                        description.text = regex.Replace(description.text, "Foo3", 1);
+                        break;
+                    default:
+                        description.text = description.text.Replace("?", "0");
+                        break;
+                }
             }
         }
 

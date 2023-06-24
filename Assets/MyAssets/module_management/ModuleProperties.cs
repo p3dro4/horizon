@@ -9,6 +9,7 @@ namespace MyAssets.module_management
         [SerializeField] private List<GameObject> modulePrefabs = new();
         [SerializeField] private int firstUpgradeModule = 4;
         [SerializeField] private List<string> moduleNames = new();
+        [SerializeField] private List<string> moduleDescriptions = new();
         [SerializeField] private List<Sprite> moduleImage = new();
         [SerializeField] private List<Color> moduleTextColor = new();
         [SerializeField] private List<Color> moduleTextOutlineColor = new();
@@ -22,6 +23,8 @@ namespace MyAssets.module_management
         public List<Color> ModuleTextOutlineColor => moduleTextOutlineColor;
 
         public List<GameObject> ModulePrefabs => modulePrefabs;
+
+        public List<string> ModuleDescriptions => moduleDescriptions;
 
         public List<GameObject> ModulePrefabsUpgrades =>
             modulePrefabs.GetRange(firstUpgradeModule, modulePrefabs.Count - firstUpgradeModule);

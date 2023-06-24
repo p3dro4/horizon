@@ -11,7 +11,8 @@ namespace MyAssets.ui.overlay
         {
             Capacity,
             Normal,
-            Income
+            Income,
+            IncomePercentage
         }
 
         [SerializeField] private ResourceState currentResource;
@@ -43,6 +44,8 @@ namespace MyAssets.ui.overlay
                 TopTextType.Normal => $"{currentResource.Resources[resourceIndex]}",
                 TopTextType.Income =>
                     $"{currentResource.Resources[resourceIndex]}({resourceIncome.Resources[resourceIndex]:+#;-#;0})",
+                TopTextType.IncomePercentage =>
+                    $"{currentResource.Resources[resourceIndex]}({resourceIncome.Resources[resourceIndex]:+#;-#;0}%)",
                 _ => _text.text
             };
             if (formatType == TopTextType.Capacity &&

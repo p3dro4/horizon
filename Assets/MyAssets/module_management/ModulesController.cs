@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MyAssets.resource_management;
+using MyAssets.resource_management.resources_requirement;
 
 namespace MyAssets.module_management
 {
@@ -10,12 +11,21 @@ namespace MyAssets.module_management
         [SerializeField] private ModuleProperties moduleProperties;
         [SerializeField] private ModuleState moduleState;
         [SerializeField] private SelectedModule selectedModule;
-        [SerializeField] private ResourceState powerConsumption;
         [SerializeField] private ResourceState resourceState;
         [SerializeField] private ResourceState resourceCapacity;
-        private const int PowerIndex = 0;
-        [SerializeField] private int minimumPowerConsumption = 10;
-        [SerializeField] private int minimumPowerCapacity = 20;
+        [SerializeField] private ResourceState resourceIncome;
+        [SerializeField] private ScriptableObjectStorage resourceProduction;
+        [SerializeField] private ScriptableObjectStorage resourceRequirement;
+
+        private Dictionary<string, int> _resourceIndex = new()
+        {
+            { "Power", 0 },
+            { "Science", 1 },
+            { "Morkite", 2 },
+            { "Bismor", 3 },
+            { "Phazionite", 4 }
+        };
+
         private List<GameObject> _modules = new();
 
         private void Awake()
@@ -40,15 +50,18 @@ namespace MyAssets.module_management
             moduleState.AddListener((pair) =>
             {
                 var oldNewPair = pair.Value;
+                RemoveAllProduction(oldNewPair.Key);
+                RemoveAllRequirements(oldNewPair.Key);
                 ChangeModule(oldNewPair.Value);
-                CalculatePower();
+                AddAllRequirements(oldNewPair.Value);
+                AddAllProduction(oldNewPair.Value);
             });
             for (var i = 0; i < _modulesLocation.Count; i++)
             {
                 ChangeModule(i, moduleState.Modules[i]);
             }
 
-            CalculatePower();
+            InitResources();
         }
 
 
@@ -64,20 +77,113 @@ namespace MyAssets.module_management
             ChangeModule(selectedModule.SelectedModuleValue, prefab);
         }
 
-        private void CalculatePower()
+        private void InitResources()
         {
-            resourceState.Resources[PowerIndex] = minimumPowerConsumption;
-            resourceCapacity.Resources[PowerIndex] = minimumPowerCapacity;
             for (var i = 0; i < moduleState.NumberOfModules; i++)
             {
-                var module = moduleState.Modules[i];
-                if (powerConsumption.Resources[module] > 0)
-                    resourceState.Resources[PowerIndex] += powerConsumption.Resources[module];
-                else
-                    resourceCapacity.Resources[PowerIndex] += Mathf.Abs(powerConsumption.Resources[module]);
+                var currentModule = moduleState.Modules[i];
+                if (currentModule < moduleProperties.FirstUpgradeModule) continue;
+                var offset = currentModule - moduleProperties.FirstUpgradeModule;
+                AddAllProduction(currentModule);
+                AddAllRequirements(currentModule);
             }
         }
 
+        private void AddAllProduction(int module)
+        {
+            if (module < moduleProperties.FirstUpgradeModule) return;
+            var offset = module - moduleProperties.FirstUpgradeModule;
+            foreach (var keyValuePair in _resourceIndex)
+            {
+                var value = ((ModuleResources)resourceProduction.Storage[offset]).GetResource(keyValuePair.Key);
+                AddProduction(keyValuePair.Key, value);
+            }
+        }
+
+        private void RemoveAllProduction(int module)
+        {
+            if (module < moduleProperties.FirstUpgradeModule) return;
+            var offset = module - moduleProperties.FirstUpgradeModule;
+            foreach (var keyValuePair in _resourceIndex)
+            {
+                var value = ((ModuleResources)resourceProduction.Storage[offset]).GetResource(keyValuePair.Key);
+                RemoveProduction(keyValuePair.Key, value);
+            }
+        }
+
+        private void AddAllRequirements(int module)
+        {
+            if (module < moduleProperties.FirstUpgradeModule) return;
+            var offset = module - moduleProperties.FirstUpgradeModule;
+            foreach (var keyValuePair in _resourceIndex)
+            {
+                var value = ((ModuleResources)resourceRequirement.Storage[offset]).GetResource(keyValuePair.Key);
+                AddRequirements(keyValuePair.Key, value);
+            }
+        }
+
+        private void RemoveAllRequirements(int module)
+        {
+            if (module < moduleProperties.FirstUpgradeModule) return;
+            var offset = module - moduleProperties.FirstUpgradeModule;
+            foreach (var keyValuePair in _resourceIndex)
+            {
+                var value = ((ModuleResources)resourceRequirement.Storage[offset]).GetResource(keyValuePair.Key);
+                RemoveRequirements(keyValuePair.Key, value);
+            }
+        }
+
+        private void AddProduction(string resource, int value)
+        {
+            switch (resource)
+            {
+                case "Power":
+                    resourceCapacity.Resources[_resourceIndex[resource]] += value;
+                    break;
+                default:
+                    resourceIncome.Resources[_resourceIndex[resource]] += value;
+                    break;
+            }
+        }
+
+        private void RemoveProduction(string resource, int value)
+        {
+            switch (resource)
+            {
+                case "Power":
+                    resourceCapacity.Resources[_resourceIndex[resource]] -= value;
+                    break;
+                default:
+                    resourceIncome.Resources[_resourceIndex[resource]] -= value;
+                    break;
+            }
+        }
+
+        private void AddRequirements(string resource, int value)
+        {
+            switch (resource)
+            {
+                case "Power":
+                    resourceState.Resources[_resourceIndex[resource]] += value;
+                    break;
+                default:
+                    //resourceState.Resources[_resourceIndex[resource]] -= value;
+                    break;
+            }
+        }
+
+        private void RemoveRequirements(string resource, int value)
+        {
+            switch (resource)
+            {
+                case "Power":
+                    resourceState.Resources[_resourceIndex[resource]] -= value;
+                    break;
+                default:
+                    //resourceState.Resources[_resourceIndex[resource]] += value;
+                    break;
+            }
+        }
 
         private void InstantiateModule(int index, int prefabIndex)
         {

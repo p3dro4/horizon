@@ -9,8 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4049acca12699cd4baee4245c28fb489, type: 3}
-  m_Name: MorkiteRequirements
+  m_Script: {fileID: 11500000, guid: cbfff218a570db648a45e7c2a0d4cf6d, type: 3}
+  m_Name: MaterialProductionModule
   m_EditorClassIdentifier: 
-  resources: 
-  initialResources: 0000000000000000000000000000000064000000af0000007d000000c8000000
+  power: 0
+  science: 0
+  morkite: 20
+  bismor: 5
+  phazionite: 10
+  initalPower: 0
+  initialScience: 0
+  initialMorkite: 20
+  initialBismor: 5
+  initialPhazionite: 10

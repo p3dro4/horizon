@@ -9,8 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4049acca12699cd4baee4245c28fb489, type: 3}
-  m_Name: ModulePowerConsuption
+  m_Script: {fileID: 11500000, guid: cbfff218a570db648a45e7c2a0d4cf6d, type: 3}
+  m_Name: MaterialProcessingModule
   m_EditorClassIdentifier: 
-  resources: 000000000000000000000000000000000a00000014000000e7ffffff0f000000
-  initialResources: 000000000000000000000000000000000a00000014000000e7ffffff0f000000
+  power: 25
+  science: 0
+  morkite: 250
+  bismor: 100
+  phazionite: 25
+  initalPower: 25
+  initialScience: 0
+  initialMorkite: 250
+  initialBismor: 100
+  initialPhazionite: 25

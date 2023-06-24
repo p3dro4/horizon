@@ -9,8 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4049acca12699cd4baee4245c28fb489, type: 3}
-  m_Name: BismorRequirements
+  m_Script: {fileID: 11500000, guid: cbfff218a570db648a45e7c2a0d4cf6d, type: 3}
+  m_Name: ResearchModule
   m_EditorClassIdentifier: 
-  resources: 00000000000000000000000000000000000000004b000000960000001e000000
-  initialResources: 00000000000000000000000000000000000000004b000000960000001e000000
+  power: 0
+  science: 10
+  morkite: 0
+  bismor: 0
+  phazionite: 0
+  initalPower: 0
+  initialScience: 10
+  initialMorkite: 0
+  initialBismor: 0
+  initialPhazionite: 0
