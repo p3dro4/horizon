@@ -117,7 +117,7 @@ Material:
     - Vector1_BA283AB7: 0.96
     - Vector1_BC31787F: 2.12
     - Vector1_D8127884: 0.72
-    - Vector1_DD6C0587: 2.13
+    - Vector1_DD6C0587: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -143,7 +143,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_89D2C634: {r: 2.9241943, g: 2.263606, b: 1.5034773, a: 0}
-    - Color_E29E6C60: {r: 4.707637, g: 0.80838215, b: 0.1664316, a: 0}
+    - Color_E29E6C60: {r: 0, g: 2.134235, b: 6.285065, a: 0}
     - Vector2_4373CA46: {r: 0, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

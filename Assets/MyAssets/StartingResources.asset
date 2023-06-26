@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e3dd114378ba949b402d6ca99e2171, type: 3}
+  m_Name: StartingResources
+  m_EditorClassIdentifier: 
+  initialPowerConsumption: 10
+  initialPowerCapacity: 20
+  initialScience: 25
+  initialScienceProduction: 20
+  initialMorkite: 300
+  initialBismor: 120
+  initialPhazyonite: 75
+  resourcesState: {fileID: 11400000, guid: e665b049fc0dc294eb021b1363c91203, type: 2}
+  resourcesIncome: {fileID: 11400000, guid: cde9adc9ad9095b42b22e33d9c5afeef, type: 2}
+  resourcesCapacity: {fileID: 11400000, guid: 15b12d526bde5dd4590bbcfd0b71d18f, type: 2}

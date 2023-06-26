@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1133d7a533f5260438b13d18c29c4cf0, type: 3}
+  m_Name: ResearchState
+  m_EditorClassIdentifier: 
+  researchModuleLvl: 0
+  researchModuleLvlMax: 3
+  materialProcessingModuleLvl: 0
+  materialProcessingModuleLvlMax: 3
+  generatorModuleLvl: 0
+  generatorModuleLvlMax: 3
+  relayModuleLvl: 0
+  relayModuleLvlMax: 3
+  lvlBonus: 0.15
+  baseCost: 25
+  reset: 0

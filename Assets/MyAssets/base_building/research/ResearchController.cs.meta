@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f9788b7c80a2d2c438df5db7863dd353
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - researchState: {fileID: 11400000, guid: a28ceeebd776dc84e8480f01453b00a5, type: 2}
+  - resourceState: {fileID: 11400000, guid: e665b049fc0dc294eb021b1363c91203, type: 2}
+  - resourceProduction: {fileID: 11400000, guid: bdcdde7d7f890c9488c71cea67dd554a,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
