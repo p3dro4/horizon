@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/p3dro4/horizon">
-    <img src="https://i.imgur.com/dw78tQ0.png" alt="Logo" width="192" height="48">
+    <img src="https://i.imgur.com/dw78tQ0.png" alt="Logo" width="224" height="80">
   </a>
 
   <h3 align="center">Horizon</h3>
