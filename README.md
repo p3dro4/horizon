@@ -13,6 +13,8 @@
   </p>
 </p>
 
+![Contributors](https://img.shields.io/github/contributors/p3dro4/report-it-ips?color=dark-green) ![Issues](https://img.shields.io/github/issues/p3dro4/report-it-ips)
+
 ## Table of Contents
 
 * [About the Project](#about-the-project)
